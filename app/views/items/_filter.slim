@@ -1,0 +1,19 @@
+.row
+  table.table.table-dark.table-striped.table-bordered
+    tr
+      thead
+        th Наименование
+        th Номинал
+        th Тип
+        th Количество
+        th Цена
+    - @items.each do |ctg, items|
+      tr
+        td colspan=5 = Category.cached_by_id[ctg]&.name
+      - items&.each do |item|
+        tr
+          td.text-left = item.name
+          td = item.value
+          td = item.item_type
+          td = item.qty
+          td.text-right = "#{item.price}₽"

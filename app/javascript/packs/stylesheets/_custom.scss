@@ -1,0 +1,12 @@
+#background {
+  background: #000000 url(images/background.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size:    cover;
+  -o-background-size:      cover;
+  background-size:         cover;
+}
+
+.price_img {
+  width: 90%;
+  object-position: 0 -260px;
+}
