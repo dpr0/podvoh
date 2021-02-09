@@ -15,5 +15,5 @@ module ApplicationHelper
       yandex: :danger,
       telegram: :primary
     }[provider]
-    end
+  end
 end

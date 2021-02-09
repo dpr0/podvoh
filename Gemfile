@@ -19,6 +19,9 @@ gem 'slim-rails'
 gem 'turbolinks'
 gem 'webpacker'
 # gem 'image_processing', '~> 1.2' # Use Active Storage variant
+gem 'omniauth'
+gem 'omniauth-yandex'
+gem 'omniauth-telegram'
 
 group :development do
   gem 'bcrypt_pbkdf'
