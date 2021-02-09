@@ -23,6 +23,14 @@ html
             li.nav-item
               .notice = notice
               .alert = alert
+            - if current_user
+              li.nav-item
+                a.nav-link
+                  = current_user.email.present? ? current_user.email : current_user.phone
+              li.nav-item
+                = link_to 'Выйти', destroy_user_session_path, class: 'nav-link', method: :delete
+              - else
+              = link_to 'Войти', new_user_session_path, class: 'nav-link'
 
     = yield
 
@@ -30,6 +38,8 @@ html
     section.contact-section.bg-black
       .container
         .social.d-flex.justify-content-center
+
+link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"
 
 javascript:
     if ("#{Rails.env}" == 'production') {

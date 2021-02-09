@@ -7,6 +7,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 gem 'bootsnap', require: false # Reduces boot times through caching; required in config/boot.rb
+gem 'devise'
 gem 'dotenv-rails'
 gem 'jbuilder'
 gem 'pg'
