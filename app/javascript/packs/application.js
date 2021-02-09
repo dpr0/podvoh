@@ -3,7 +3,6 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'bootstrap'
-import './stylesheets/application'
 import firebase from 'firebase/app';
 require("firebase")
 require("firebaseui-ru")
@@ -36,10 +35,10 @@ ui.start('#firebaseui-auth-container', {
                     authenticity_token: $('meta[name="csrf-token"]').attr("content"),
                     user: {
                         provider: currentUser.additionalUserInfo.providerId,
-                        uid:      currentUser.user.uid,
-                        email:    currentUser.user.email,
-                        name:     currentUser.user.displayName,
-                        phone:    currentUser.user.phoneNumber
+                        uid: currentUser.user.uid,
+                        email: currentUser.user.email,
+                        name: currentUser.user.displayName,
+                        phone: currentUser.user.phoneNumber
                     }
                 },
                 () => window.location.reload()
