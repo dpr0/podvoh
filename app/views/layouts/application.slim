@@ -29,7 +29,7 @@ html
                   = current_user.email.present? ? current_user.email : current_user.phone
               li.nav-item
                 = link_to 'Выйти', destroy_user_session_path, class: 'nav-link', method: :delete
-              - else
+            - else
               = link_to 'Войти', new_user_session_path, class: 'nav-link'
 
     = yield
