@@ -24,10 +24,8 @@
             #firebaseui-auth-container
           - else
             li.firebaseui-list-item
-              - klass = { yandex: 'password', telegram: 'twitter' }[provider]
-              - image_ico = { yandex: 'yandex.ico', telegram: 'telegram.ico' }[provider]
-              = link_to omniauth_authorize_path(resource_name, provider), class: "firebaseui-idp-button mdl-button mdl-js-button mdl-button--raised firebaseui-idp-#{klass} firebaseui-id-idp-button", data: { "provider-id" => "google.com", upgraded: ",MaterialButton" } do
-                span.firebaseui-idp-icon-wrapper= image_tag image_ico, class: 'firebaseui-idp-icon'
+              - klass = { yandex: 'firebaseui-idp-password', telegram: 'firebaseui-idp-twitter' }[provider]
+              = link_to omniauth_authorize_path(resource_name, provider), class: "firebaseui-idp-button mdl-button mdl-js-button #{klass}" do
+                span.firebaseui-idp-icon-wrapper= image_tag "#{provider}.ico", class: 'firebaseui-idp-icon'
                 span.firebaseui-idp-text.firebaseui-idp-text-long= "Войти через аккаунт #{OmniAuth::Utils.camelize(provider)}"
-                span.firebaseui-idp-text.firebaseui-idp-text-short= "#{OmniAuth::Utils.camelize(provider)}"
     .col-4

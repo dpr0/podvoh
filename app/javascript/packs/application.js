@@ -2,10 +2,13 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import './stylesheets/application'
 import 'bootstrap'
 import firebase from 'firebase/app';
+import "@fortawesome/fontawesome-free/js/all";
 require("firebase")
 require("firebaseui-ru")
+require('admin-lte')
 
 Rails.start()
 Turbolinks.start()
@@ -26,8 +29,7 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 ui.start('#firebaseui-auth-container', {
     signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        {provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID, defaultCountry: 'ru'},
-        firebase.auth.EmailAuthProvider.PROVIDER_ID
+        {provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID, defaultCountry: 'ru'}
     ],
     callbacks: {
         signInSuccessWithAuthResult: (currentUser) => {

@@ -5,39 +5,20 @@ html
     meta name="viewport" content="width=device-width,initial-scale=1"
     = csrf_meta_tags
     = csp_meta_tag
-    link href="/public/favicon.ico" rel=('shortcut icon') type="image/x-icon"
-    title podvoh.ru
+    link href="favicon.ico" rel=('shortcut icon') type="image/x-icon"
+    title podvoh.xyz
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
-  body style="background-color: rgba(22,22,22,1)"
-    nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top
-      .container
-        = link_to 'PODVOH.XYZ', root_path, class: 'nav-brand js-scroll-trigger'
-        button.navbar-toggler.navbar-toggler-right aria-controls="navbarResponsive" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarResponsive" data-toggle="collapse" type="button"
-          | Menu
-          i.fas.fa-bars
-        #navbarResponsive.collapse.navbar-collapse
-          ul.navbar-nav.ml-auto
-            li.nav-item
-              .notice = notice
-              .alert = alert
-            - if current_user
-              li.nav-item
-                a.nav-link
-                  = current_user.email.present? ? current_user.email : current_user.phone
-              li.nav-item
-                = link_to 'Выйти', destroy_user_session_path, class: 'nav-link', method: :delete
-            - else
-              = link_to 'Войти', new_user_session_path, class: 'nav-link', data: { turbolinks: false }
-
-    = yield
-
-  footer.bg-black.small.text-center.text-white-50
-    section.contact-section.bg-black
-      .container
-        .social.d-flex.justify-content-center
+  body.hold-transition.sidebar-mini.layout-fixed data-scrollbar-auto-hide="n"
+    .wrapper
+      = render 'layouts/header'
+      = render 'layouts/sidebar'
+      .content-wrapper.bg-black
+        = yield
+      = render 'layouts/footer'
+      = render 'layouts/control_sidebar'
 
 link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"
 

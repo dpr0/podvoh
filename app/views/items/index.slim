@@ -3,6 +3,17 @@
 section#section1.signup-section.bg-black.text-center
   .container
     .row
+      - (0..13).each_slice(7) do |part|
+        div
+          - part.each do |i|
+            = image_tag "podvoh/image_part_#{(i+1).to_s.rjust(3, "0")}.jpg", style: 'width: 14%;', class: 'bordered'
+    .row
+      - (0..23).each_slice(12) do |part|
+        div
+          - part.each do |i|
+            = image_tag "borisych/image_part_#{(i+1).to_s.rjust(3, "0")}.jpg", style: 'width: 8%;', class: 'bordered'
+
+    .row
       .row class="mb-5 mb-lg-0"
         .col-lg-6
           .text-center

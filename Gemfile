@@ -7,7 +7,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 gem 'bootsnap', require: false # Reduces boot times through caching; required in config/boot.rb
-gem 'devise'
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 gem 'dotenv-rails'
 gem 'jbuilder'
 gem 'pg'
@@ -22,6 +22,8 @@ gem 'webpacker'
 gem 'omniauth'
 gem 'omniauth-yandex'
 gem 'omniauth-telegram'
+gem 'telegram-bot', github: 'telegram-bot-rb/telegram-bot', branch: 'ruby-3.0'
+gem 'telegram-bot-types'
 
 group :development do
   gem 'bcrypt_pbkdf'

@@ -14,3 +14,16 @@
  *= require 'bootstrap'
  *= require_self
  */
+@import "~admin-lte";
+@import '~@fortawesome/fontawesome-free';
+@import "~bootstrap/scss/bootstrap.scss";
+
+a img {
+    opacity:1;
+    transition:opacity .5s;
+    float:left;
+}
+a:hover img{
+    opacity:0;
+    transition:opacity .5s;
+}
