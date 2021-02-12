@@ -14,7 +14,6 @@
  *= require 'bootstrap'
  *= require_self
  */
-@import "~admin-lte";
 @import '~@fortawesome/fontawesome-free';
 @import "~bootstrap/scss/bootstrap.scss";
 
