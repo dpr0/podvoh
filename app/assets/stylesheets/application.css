@@ -12,10 +12,9 @@
  *
  *= require_tree .
  *= require 'bootstrap'
+ *= require 'admin-lte'
  *= require_self
  */
-@import '~@fortawesome/fontawesome-free';
-@import "~bootstrap/scss/bootstrap.scss";
 
 a img {
     opacity:1;
