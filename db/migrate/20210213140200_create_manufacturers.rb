@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateManufacturers < ActiveRecord::Migration[6.0]
+class CreateManufacturers < ActiveRecord::Migration[6.1]
   def change
     create_table :manufacturers do |t|
       t.string :code

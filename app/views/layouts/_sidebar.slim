@@ -3,52 +3,34 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4
     = image_tag "mask.png", style: "opacity: .8", class: 'brand-image img-circle elevation-3'
     span.brand-text.font-weight-light podvoh.xyz
   .sidebar
-    - if current_user
-      .user-panel.mt-3.pb-3.mb-3.d-flex
-        .image
-          / = image_tag current_user.id, style: "opacity: .8", class: 'img-circle elevation-2'
-        .info
-          a.d-block href="#" = current_user.email
-          = link_to 'Выйти', destroy_user_session_path, class: 'nav-link', method: :delete
-    - else
-      = link_to 'Войти', new_user_session_path, class: 'nav-link', data: { turbolinks: false }
+    / - if current_user
+    /   .user-panel.mt-3.pb-3.mb-3.d-flex
+    /     .image
+    /       / = image_tag current_user.id, style: "opacity: .8", class: 'img-circle elevation-2'
+    /     .info
+    /       a.d-block href="#" = current_user.email
+    /       = link_to 'Выйти', destroy_user_session_path, class: 'nav-link', method: :delete
+    / - else
+    /   = link_to 'Войти', new_user_session_path, class: 'nav-link', data: { turbolinks: false }
 
     nav.mt-2
       ul.nav.nav-pills.nav-sidebar.flex-column data-accordion="false" data-widget="treeview" role="menu"
         li.nav-item
-        / - next_and_last = Day.last.next_and_last
-        / li.nav-item
-        /   = link_to next_days_path, class: 'nav-link' do
-        /     i.nav-icon.fas.fa-th
-        /     p
-        /       = next_and_last.first
-        /       span.right.badge.badge-danger След.
-        / li.nav-item.has-treeview.menu-open
-        /   a.nav-link.active href="#"
-        /     i.nav-icon.far.fa-futbol
-        /     p
-        /       = next_and_last.last
-        /       i.right.fas.fa-angle-down
-        /   ul.nav.nav-treeview
-        /     li.nav-item
-        /       = link_to day_path(Day.last.id), class: 'nav-link' do
-        /         i.far.fa-circle.nav-icon
-        /         p Результаты
-        /     li.nav-item
-        /       = link_to teams_day_path(Day.last.id), class: 'nav-link' do
-        /         i.far.fa-circle.nav-icon
-        /         p Команды
-        /     li.nav-item
-        /       = link_to games_day_path(Day.last.id), class: 'nav-link' do
-        /         i.far.fa-circle.nav-icon
-        /         p Игры
-        /     li.nav-item
-        /       = link_to videos_day_path(Day.last.id), class: 'nav-link' do
-        /         i.far.fa-circle.nav-icon
-        /         p Видео
-        / li.nav-item
-        /   = link_to 'Статистика игроков', sport_season_stats_path(sport_id: 1, season_id: Season.last.id), class: 'nav-link'
-        / li.nav-item
-        /   = link_to 'Статистика игр', days_path, class: 'nav-link'
-        / li.nav-item
-        /   = link_to 'Инфо', about_days_path, class: 'nav-link'
+          = link_to categories_path, class: 'nav-link' do
+            i.nav-icon.fas.fa-th
+            p
+              | xxx.
+              span.right.badge.badge-danger xxx.
+        - Category.where(section_id: 1).each do |category|
+          li.nav-item.has-treeview.menu-open
+            a.nav-link.active href="#"
+              i.nav-icon.far.fa-futbol
+              p
+                = category.name
+                i.right.fas.fa-angle-down
+            ul.nav.nav-treeview
+              - category.subcategories.each do |category|
+                li.nav-item
+                  = link_to category_path(category.id), class: 'nav-link' do
+                    i.far.fa-circle.nav-icon
+                    p = category.name

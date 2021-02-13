@@ -6,7 +6,7 @@ section.text-center
         p
           input type="range" class="form-range" min="450" max="900" step="150" id="customRange3"
     .row
-      - @mods.each_slice(3) do |mods|
+      - Item::MODS.each_slice(3) do |mods|
         .col-3
           - mods.each do |n, m|
             - m.each_slice(12) do |part|

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class CreateCategories < ActiveRecord::Migration[6.0]
+class CreateCategories < ActiveRecord::Migration[6.1]
   def change
     create_table :categories do |t|
       t.string :code
       t.string :name
-      t.integer :group_id
+      t.integer :section_id
       t.timestamps
     end
   end
