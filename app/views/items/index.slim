@@ -1,48 +1,64 @@
-= javascript_pack_tag 'hello_react'
+section.text-center
+  .container
+    .row
+      .col-4
+        label for="customRange3" class="form-label" Длина, мм
+        p
+          input type="range" class="form-range" min="450" max="900" step="150" id="customRange3"
+    .row
+      - @mods.each_slice(3) do |mods|
+        .col-3
+          - mods.each do |n, m|
+            - m.each_slice(12) do |part|
+              div
+                - part.each do |i|
+                  = image_tag "borisych/image_part_#{(i).to_s.rjust(2, "0")}.jpg", style: 'width: 8%;', class: 'bordered'
 
-section#section1.signup-section.bg-black.text-center
+    .row
+      .col-4
+        .text-center
+          .d-flex.h-100
+            .project-text.w-100.my-auto.text-center class="text-lg-left"
+              h4 Длина ружья, мм
+              p.mb-0
+                - Item::ITEM_LENGTH.each do |length|
+                  div
+                    span = link_to length, items_path(item_length: length)
+      .col-4
+        .text-center
+          .d-flex.h-100
+            .project-text.w-100.my-auto.text-center class="text-lg-left"
+              h4 До рукоятки, мм
+              p.mb-0
+                - Item::HAND_LENGTH.each do |length|
+                  div
+                    span = link_to length, items_path(hand_length: length)
+      .col-4
+        .text-center
+          .d-flex.h-100
+            .project-text.w-100.my-auto.text-center class="text-lg-left"
+              h4 Комплектация
+              p.mb-0
+                = form_tag '', id: 'form', remote: true
+                - Item::KOMPLEKT.each do |name|
+                  .form-check
+                    .custom-control.custom-checkbox
+                      input.custom-control-input type="checkbox" id="manufacturer_#{name}" class="manufacturer" data-id="#{name}"
+                      label.custom-control-label for="manufacturer_#{name}" = name
+
+    .filter
+      = render partial: 'filter'
+
+section.about-section.text-center
   .container
     .row
       - (0..13).each_slice(7) do |part|
         div
           - part.each do |i|
-            = image_tag "podvoh/image_part_#{(i+1).to_s.rjust(3, "0")}.jpg", style: 'width: 14%;', class: 'bordered'
-    .row
-      - (0..23).each_slice(12) do |part|
-        div
-          - part.each do |i|
-            = image_tag "borisych/image_part_#{(i+1).to_s.rjust(3, "0")}.jpg", style: 'width: 8%;', class: 'bordered'
+            = link_to '#' do
+              = image_tag "podvoh/image_part_#{(i+1).to_s.rjust(3, "0")}.jpg", style: 'width: 14%;', class: 'bordered'
 
-    .row
-      .row class="mb-5 mb-lg-0"
-        .col-lg-6
-          .text-center
-            .d-flex.h-100
-              .project-text.w-100.my-auto.text-center class="text-lg-left"
-                h4.text-white Длина
-                p.mb-0.text-white-50
-                  - [450, 600, 750, 900].each do |length|
-                    div
-                      span = link_to length, items_path(item_type: length)
-        .col-lg-6
-          .text-center
-            .d-flex.h-100
-              .project-text.w-100.my-auto.text-center class="text-lg-left"
-                h4.text-white Модель
-                p.mb-0.text-white-50
-                  = form_tag '', id: 'form', remote: true
-                  - ['Каюк-13', 'Борисыч'].each do |name|
-                    .form-check
-                      .custom-control.custom-checkbox
-                        input.custom-control-input type="checkbox" id="manufacturer_#{name}" class="manufacturer" data-id="#{name}"
-                        label.custom-control-label.text-white for="manufacturer_#{name}" = name
-
-    .filter
-      = render partial: 'filter'
-
-section.about-section.bg-black.text-center
-  .container
-    .row
+= javascript_pack_tag 'hello_react'
 
 javascript:
     $( () => $('.manufacturer').on('change', (checkbox) => {

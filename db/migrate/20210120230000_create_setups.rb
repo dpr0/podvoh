@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-class CreateCategories < ActiveRecord::Migration[6.0]
+class CreateSetups < ActiveRecord::Migration[6.0]
   def change
-    create_table :categories do |t|
+    create_table :setups do |t|
       t.string :code
       t.string :name
-      t.integer :group_id
       t.timestamps
     end
   end

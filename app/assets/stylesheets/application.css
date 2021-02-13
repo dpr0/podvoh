@@ -15,13 +15,3 @@
  *= require 'admin-lte'
  *= require_self
  */
-
-a img {
-    opacity:1;
-    transition:opacity .5s;
-    float:left;
-}
-a:hover img{
-    opacity:0;
-    transition:opacity .5s;
-}
