@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
 class ItemsController < ApplicationController
-  def index
-    # item_length hand_length
-    @items = params[:item_type].present? ? Item.where(item_type: params[:item_type]) : Item
-    @items = @items.all.to_a.group_by(&:item_type)
+  def show
+    @item = Item.find(params[:id])
+    @subcategory = @item.subcategory
+    @category = @subcategory.category
+    query = {}
+    Item::PROPS.each { |p| query[p] = params[p] if params[p] }
+    @modifications = @item.modifications.where(query)
   end
 
   def filter

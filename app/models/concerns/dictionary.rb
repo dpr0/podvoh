@@ -81,8 +81,7 @@ module Dictionary
     # @return [Array<Symbol>]
     def cached_attributes
       attributes = %i[id code name]
-      attributes.push(:name_en) if attribute_names.include?('name_en')
-      attributes.push(:deleted_at) if attribute_names.include?('deleted_at')
+      attributes.push(:category_id) if attribute_names.include?('category_id')
       attributes
     end
   end

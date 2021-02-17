@@ -40,15 +40,10 @@ yarn-debug.log*
 .env
 .DS_Store
 ebash
+ebash1
+ebash2
 dump.rdb
 
 /config/credentials/development.key
 
 /config/credentials/production.key
-
-/public/packs
-/public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity

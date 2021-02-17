@@ -6,6 +6,7 @@ class CreateCategories < ActiveRecord::Migration[6.1]
       t.string :code
       t.string :name
       t.integer :section_id
+      t.string :klass
       t.timestamps
     end
   end

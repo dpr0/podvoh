@@ -19,8 +19,19 @@ nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
   ul.navbar-nav.ml-auto
     li.breadcrumb-item
       = link_to 'Главная', root_path
-    li.breadcrumb-item.active Starter Page
+    - if @category
+      li.breadcrumb-item
+        = link_to @category.name, section_category_path(Section.podvoh, @category.id)
+    - if @subcategory
+      li.breadcrumb-item.active
+        = link_to @subcategory.name, section_category_subcategory_path(Section.podvoh, @category.id, @subcategory.id)
   ul.navbar-nav.ml-auto
+    - if current_user
+      a.nav-link href="#" = current_user.email
+      = link_to 'Выйти', destroy_user_session_path, class: 'nav-link', method: :delete
+    - else
+      = link_to 'Войти', new_user_session_path, class: 'nav-link', data: { turbolinks: false }
+
     /! Messages Dropdown Menu
     li.nav-item.dropdown
       a.nav-link data-toggle="dropdown" href="#"

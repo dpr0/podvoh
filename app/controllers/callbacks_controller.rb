@@ -17,11 +17,10 @@ class CallbacksController < Devise::OmniauthCallbacksController
 
   def upsert_user(provider)
     @user = User.find_for_oauth(auth(request.env['omniauth.auth'] || params))
+    return unless @user.persisted?
 
-    if @user.persisted?
-      sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: provider) if is_navigational_format?
-    end
+    sign_in_and_redirect @user, event: :authentication
+    set_flash_message(:notice, :success, kind: provider) if is_navigational_format?
   end
 
   def auth(params)

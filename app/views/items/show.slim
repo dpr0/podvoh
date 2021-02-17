@@ -1,0 +1,41 @@
+section.text-center
+  .container
+    .row
+      - Item::PROPS.each do |prop|
+        - property = @item.send(prop)
+        - if property
+          .col-3
+            .text-center
+              .d-flex.h-100
+                .project-text.w-100.my-auto.text-center class="text-lg-left"
+                  b = property
+                  - @modifications.distinct.pluck(prop).map(&:to_i).sort.each do |mod|
+                    p.mb-0
+                      span = link_to mod, section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id, prop => mod)
+
+      .col-4
+        .text-center
+          .d-flex.h-100
+            .project-text.w-100.my-auto.text-center class="text-lg-left"
+              h4 Комплектация
+              p.mb-0
+                = form_tag '', id: 'form', remote: true
+                - Item::KOMPLEKT.each do |name|
+                  .form-check
+                    .custom-control.custom-checkbox
+                      input.custom-control-input type="checkbox" id="manufacturer_#{name}" class="manufacturer" data-id="#{name}"
+                      label.custom-control-label for="manufacturer_#{name}" = name
+
+    .filter
+      = render partial: 'filter'
+
+= javascript_pack_tag 'hello_react'
+
+javascript:
+    $( () => $('.manufacturer').on('change', (checkbox) => {
+        var mnf_ids = $("#form input[type='checkbox']").map((i, el) => { if (el.checked) return el.dataset.id });
+        var params = { manufacturer_ids: mnf_ids.toArray() };
+        var searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.has('category_id')) params.category_id = searchParams.get('category_id');
+        $.post("#{filter_section_category_subcategory_item_modifications_path(Section.podvoh, @category.id, @subcategory.id, @item.id)}", params);
+    }));

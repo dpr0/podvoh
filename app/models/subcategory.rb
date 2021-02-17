@@ -3,5 +3,6 @@
 class Subcategory < ApplicationRecord
   include Dictionary
 
+  has_many :items
   belongs_to :category
 end

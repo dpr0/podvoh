@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_140600) do
+ActiveRecord::Schema.define(version: 2021_02_13_140700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,19 +29,19 @@ ActiveRecord::Schema.define(version: 2021_02_13_140600) do
     t.string "code"
     t.string "name"
     t.integer "section_id"
+    t.string "klass"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "items", force: :cascade do |t|
+    t.string "code"
     t.string "name"
-    t.integer "price"
-    t.integer "category_id"
     t.integer "manufacturer_id"
-    t.integer "user_id"
-    t.integer "setup_id"
-    t.string "image_group"
-    t.string "image_array"
+    t.integer "subcategory_id"
+    t.string "prop1"
+    t.string "prop2"
+    t.string "prop3"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -58,19 +58,31 @@ ActiveRecord::Schema.define(version: 2021_02_13_140600) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "sections", force: :cascade do |t|
+  create_table "modifications", force: :cascade do |t|
     t.string "code"
-    t.string "name"
+    t.string "prop1"
+    t.string "prop2"
+    t.string "prop3"
+    t.integer "price"
+    t.integer "item_id"
+    t.integer "image_id"
+    t.string "images"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "setups", force: :cascade do |t|
+  create_table "parts", force: :cascade do |t|
     t.string "code"
     t.string "name"
     t.integer "item_id"
-    t.integer "manufacturer_id"
     t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -79,6 +91,7 @@ ActiveRecord::Schema.define(version: 2021_02_13_140600) do
     t.string "code"
     t.string "name"
     t.integer "category_id"
+    t.string "klass"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,0 +1,6 @@
+section.text-center
+  .container
+    .row
+      - @manufacturers.each do |manufacturer|
+        .col-2
+          = image_tag "manufacturers/#{manufacturer.code}.jpg", style: 'width: 70%;'

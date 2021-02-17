@@ -1,19 +1,8 @@
 .row
-  table.table.table-striped.table-bordered
-    tr
-      thead
-        th Наименование
-        th Номинал
-        th Тип
-        th Количество
-        th Цена
-    - @items.each do |ctg, items|
-      tr
-        td colspan=5 = Category.cached_by_id[ctg]&.name
-      - items&.each do |item|
-        tr
-          td.text-left = item.name
-          td = item.value
-          td = item.item_type
-          td = item.qty
-          td.text-right = "#{item.price}₽"
+  - @modifications.each_slice(3) do |mods|
+    .col-3
+      - mods.each do |mod|
+        - mod.images.split(",").map { |z| z.to_i.to_s.rjust(2, "0") }.each_slice(12) do |part|
+          div
+            - part.each do |i|
+              = image_tag "#{@item.code}/image_part_#{i}.jpg", style: 'width: 8%;', class: 'bordered'

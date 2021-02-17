@@ -27,8 +27,8 @@ firebase.analytics();
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 ui.start('#firebaseui-auth-container', {
     signInOptions: [
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        {provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID, defaultCountry: 'ru'}
+        {provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID, defaultCountry: 'ru'},
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID
     ],
     callbacks: {
         signInSuccessWithAuthResult: (currentUser) => {

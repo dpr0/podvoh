@@ -1,13 +1,10 @@
-footer.main-footer.bg-black
+footer.main-footer
   .container
-    .row.text-white-50
+    .row
       .col-12.text-center
-        - Common.sites.each do |name, str|
-          = link_to "https://#{name}", class: 'mx-2' do
-            i class="#{str}"
         .text-uppercase.m-0
           | Copyright &copy;
-          = " 2015-#{Time.now.year}"
+          = " #{Time.now.year}"
         .small
           a href='https://t.me/dvitvitskiy' Telegram
           | &nbsp; / &nbsp;
