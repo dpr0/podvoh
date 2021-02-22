@@ -1,32 +1,7 @@
 section.text-center
   .container
     .row
-      .col-2
-        h1.text-uppercase = link_to "#{@manufacturer.name}", '#'
-        h1 = flag_icon(@manufacturer.country)
-      .col-2
-        h3
-          a.text-uppercase.text-dark = "\"#{@item.name}\""
-      .col-2
-        = image_tag "manufacturers/#{@manufacturer.code}.jpg", style: 'width: 99%;'
-      .col-4
-        div.text-left
-          div
-            small Оф.сайт:
-            small &nbsp
-            small = link_to @manufacturer.www, @manufacturer.www
-          div
-            small Email:
-            small &nbsp
-            small = link_to @manufacturer.email, @manufacturer.email
-          div
-            small Тел:
-            small &nbsp
-            small = link_to @manufacturer.phone, '#'
-          div
-            small Адрес:
-            small &nbsp
-            small = link_to @manufacturer.address, '#'
+      h4 = @item.name
 
     .row
       .col-2

@@ -11,7 +11,7 @@ cat7 = Category.create(code: 'other',    name: 'Другое',              sect
 [
 {category_id: cat1.id, code: 'pnevmat',      name: 'Пневматические ружья', klass: ''},
 {category_id: cat1.id, code: 'speargun',     name: 'Арбалеты',             klass: ''},
-{category_id: cat1.id, code: 'shafts',       name: 'Гарпуны, пули',        klass: 'fas fa-long-arrow-alt-right'},
+{category_id: cat1.id, code: 'shafts',       name: 'Гарпуны',              klass: 'fas fa-long-arrow-alt-right'},
 {category_id: cat1.id, code: 'reels',        name: 'Катушки',              klass: ''},
 
 {category_id: cat2.id, code: 'wetsuits',     name: 'Гидрокостюмы',         klass: 'fas fa-tshirt'},
