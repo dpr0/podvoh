@@ -3,6 +3,6 @@
 class Subcategory < ApplicationRecord
   include Dictionary
 
-  has_many :items
+  has_many :manufacturers
   belongs_to :category
 end

@@ -6,7 +6,9 @@ class CreateParts < ActiveRecord::Migration[6.1]
       t.string :code
       t.string :name
       t.integer :item_id
+      t.integer :modification_id
       t.integer :price
+      t.string :description
       t.timestamps
     end
   end

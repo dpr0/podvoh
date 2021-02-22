@@ -8,9 +8,8 @@ Rails.application.routes.draw do
     resources :categories do
       resources :subcategories do
         resources :items do
-          resources :modifications do
-            post :filter, on: :collection
-          end
+          resources :modifications
+          post :filter, on: :member
         end
       end
     end

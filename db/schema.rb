@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_02_13_140700) do
     t.string "prop1"
     t.string "prop2"
     t.string "prop3"
+    t.string "part_codes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 2021_02_13_140700) do
     t.integer "item_id"
     t.integer "image_id"
     t.string "images"
+    t.string "part_codes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -75,7 +77,9 @@ ActiveRecord::Schema.define(version: 2021_02_13_140700) do
     t.string "code"
     t.string "name"
     t.integer "item_id"
+    t.integer "modification_id"
     t.integer "price"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,41 +1,89 @@
 section.text-center
   .container
     .row
-      - Item::PROPS.each do |prop|
-        - property = @item.send(prop)
-        - if property
-          .col-3
-            .text-center
-              .d-flex.h-100
-                .project-text.w-100.my-auto.text-center class="text-lg-left"
-                  b = property
-                  - @modifications.distinct.pluck(prop).map(&:to_i).sort.each do |mod|
-                    p.mb-0
-                      span = link_to mod, section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id, prop => mod)
+      .col-2
+        h1.text-uppercase = link_to "#{@manufacturer.name}", '#'
+        h1 = flag_icon(@manufacturer.country)
+      .col-2
+        h3
+          a.text-uppercase.text-dark = "\"#{@item.name}\""
+      .col-2
+        = image_tag "manufacturers/#{@manufacturer.code}.jpg", style: 'width: 99%;'
+      .col-4
+        div.text-left
+          div
+            small Оф.сайт:
+            small &nbsp
+            small = link_to @manufacturer.www, @manufacturer.www
+          div
+            small Email:
+            small &nbsp
+            small = link_to @manufacturer.email, @manufacturer.email
+          div
+            small Тел:
+            small &nbsp
+            small = link_to @manufacturer.phone, '#'
+          div
+            small Адрес:
+            small &nbsp
+            small = link_to @manufacturer.address, '#'
+
+    .row
+      .col-2
+        - Item::PROPS.each do |prop|
+          - property = @item.send(prop)
+          - next unless property
+          .text-center
+            .d-flex.h-100
+              .project-text.w-100.my-auto.text-center class="text-lg-left"
+                h5 = property
+                - @modifications.group_by(&prop).each do |pr, mods|
+                  p.mb-0
+                    - query = {}
+                    - Item::PROPS.each { |p| query[p] = params[p] if params[p] }
+                    - query[prop.to_sym] = mods.first.send(prop).to_i
+                    span = link_to mods.first.send(prop).to_i, section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id, query), class: params[prop] == mods.first.send(prop).to_s ? "text-primary" : "text-secondary"
+      .col-5
+        h5 = link_to 'Убрать фильтр', section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id)
+        .filter
+          = render partial: 'filter'
 
       .col-4
         .text-center
           .d-flex.h-100
             .project-text.w-100.my-auto.text-center class="text-lg-left"
-              h4 Комплектация
+              = form_tag '', id: 'parts_form', remote: true
+              h5 Комплектация
               p.mb-0
-                = form_tag '', id: 'form', remote: true
-                - Item::KOMPLEKT.each do |name|
+                - @mods_parts.each do |mod_part|
                   .form-check
                     .custom-control.custom-checkbox
-                      input.custom-control-input type="checkbox" id="manufacturer_#{name}" class="manufacturer" data-id="#{name}"
-                      label.custom-control-label for="manufacturer_#{name}" = name
+                      input.custom-control-input type="checkbox" id="mod_part_#{mod_part.id}" class="manufacturer" data-id="#{mod_part.id}"
+                      label.custom-control-label for="mod_part_#{mod_part.id}"
+                        sup.text-right.text-primary = "+#{mod_part.price} "
+                        = mod_part.name
 
-    .filter
-      = render partial: 'filter'
+              h5 Дополнительно
+              p.mb-0
+                - @item_parts.each do |item_part|
+                  .form-check
+                    .custom-control.custom-checkbox
+                      input.custom-control-input type="checkbox" id="item_part_#{item_part.id}" class="manufacturer" data-id="#{item_part.id}"
+                      label.custom-control-label for="item_part_#{item_part.id}"
+                        sup.text-right.text-primary = "+#{item_part.price} "
+                        = item_part.name
 
 = javascript_pack_tag 'hello_react'
 
 javascript:
     $( () => $('.manufacturer').on('change', (checkbox) => {
-        var mnf_ids = $("#form input[type='checkbox']").map((i, el) => { if (el.checked) return el.dataset.id });
-        var params = { manufacturer_ids: mnf_ids.toArray() };
+        var parts = $("#parts_form input[type='checkbox']").map((i, el) => { if (el.checked) return el.dataset.id });
+        var params = { parts: parts.toArray() };
         var searchParams = new URLSearchParams(window.location.search);
-        if (searchParams.has('category_id')) params.category_id = searchParams.get('category_id');
-        $.post("#{filter_section_category_subcategory_item_modifications_path(Section.podvoh, @category.id, @subcategory.id, @item.id)}", params);
+        if (searchParams.has('prop1')) params.prop1 = searchParams.get('prop1');
+        if (searchParams.has('prop2')) params.prop2 = searchParams.get('prop2');
+        if (searchParams.has('prop3')) params.prop3 = searchParams.get('prop3');
+        $.post("#{filter_section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id)}", params);
     }));
+
+    $( () => $('.logo').animate({}, 2000) )

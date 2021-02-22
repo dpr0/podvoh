@@ -1,8 +1,8 @@
 .row
-  - @modifications.each_slice(3) do |mods|
-    .col-3
-      - mods.each do |mod|
-        - mod.images.split(",").map { |z| z.to_i.to_s.rjust(2, "0") }.each_slice(12) do |part|
-          div
-            - part.each do |i|
-              = image_tag "#{@item.code}/image_part_#{i}.jpg", style: 'width: 8%;', class: 'bordered'
+  .btn.btn-block.btn-outline-primary = "Сумма: #{@sum}"
+  - @grouped_modifications&.uniq&.each do |prop, mods|
+    - mods.each do |mod|
+      - mod.images.split(",").map { |z| z.to_i.to_s.rjust(2, "0") }.each_slice(12) do |part|
+        div
+          - part.each do |i|
+            = image_tag "#{@item.code}/image_part_#{i}.jpg", style: 'width: 8%;', class: 'bordered logo'

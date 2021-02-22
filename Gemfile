@@ -6,8 +6,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
 
-gem 'bootsnap', require: false # Reduces boot times through caching; required in config/boot.rb
-gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
+gem 'bootsnap', require: false
+gem 'devise'
 gem 'dotenv-rails'
 gem 'jbuilder'
 gem 'pg'
@@ -18,12 +18,13 @@ gem 'sass-rails'
 gem 'slim-rails'
 gem 'turbolinks'
 gem 'webpacker'
-# gem 'image_processing', '~> 1.2' # Use Active Storage variant
 gem 'omniauth'
 gem 'omniauth-yandex'
 gem 'omniauth-telegram'
-gem 'telegram-bot', github: 'telegram-bot-rb/telegram-bot', branch: 'ruby-3.0'
+gem 'telegram-bot'
 gem 'telegram-bot-types'
+gem 'flag-icons-rails'
+# gem 'image_processing'
 
 group :development do
   gem 'bcrypt_pbkdf'

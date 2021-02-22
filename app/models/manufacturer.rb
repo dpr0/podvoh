@@ -2,4 +2,5 @@
 
 class Manufacturer < ApplicationRecord
   include Dictionary
+  has_many :items
 end
