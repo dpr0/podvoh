@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   def show; end
 
   def filter
+    @reel = params[:parts]&.include?('1')
     @sum += Part.where(id: params[:parts]).sum(&:price)
     render layout: false
   end
