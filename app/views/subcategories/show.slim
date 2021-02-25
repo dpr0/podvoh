@@ -3,9 +3,12 @@ section.text-center
     .row
       .col-4
         h3 Производители
-        - @manufacturers.each do |manufacturer|
-          = link_to manufacturer.name, manufacturer_path(manufacturer.id)
       .col-4
         h3 Модели
-        - @items.each do |item|
-          = link_to item.name, section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, item.id)
+    - @manufacturers.each do |manufacturer|
+      .row
+        .col-4
+          = link_to manufacturer.name, manufacturer_path(manufacturer.id), class: 'btn btn-block btn-outline-primary'
+        .col-4
+          - @items.each do |item|
+            = link_to item.name, section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, item.id), class: 'btn btn-block btn-outline-primary'

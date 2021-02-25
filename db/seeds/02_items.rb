@@ -38,3 +38,21 @@ m11 = Modification.create(code: '20021', prop1: '900', prop2: '246', item_id: it
   {code: '01031', name: 'Пятизубец',                    item_id: 1, price: 2880, description: 'Пятизубец изготавливается под резьбу международного стандарта М7. Диаметр среднего и крайних зубов 6 мм. Диаметр промежуточных зубов 5 мм.  Длина центрального зуба 200 мм. Расстояние от флажка до кончика зуба 35 мм. Расстояние по осям между крайними зубами 100 мм. Флажки выполнены из пружинной нержавеющей проволоки диаметром 2 мм. Остальные элементы изготовлены из упругой нержавеющей стали. Кончики среднего и крайних зубов выполнены трехгранными и имеют большую проникающую способность по сравнению с круглыми. В основном применяется при охоте на угря. Положение флажков во время выстрела, удержания и снятия смотрите на фото. Перед очередным заряжанием не забудьте вернуть флажки в исходное положение.'},
   # {code: '', name: '',                     item_id: 1, price: 0, description: ''},
 ].each { |hash| Part.create(hash) }
+
+item2 = Item.create(manufacturer_id: Manufacturer.cached[:kayuk].id, subcategory_id: 1, name: 'Каюк-13', code: 'kayuk13', prop1: 'Длина, мм', prop2: 'До рукоятки, мм', prop3: nil, part_codes: '')
+Modification.create(code: '13001', prop1: '450', prop2:  '96', item_id: item2.id, part_codes: '1,2,01191,01171,01161', price: 13600, images: '')
+Modification.create(code: '13006', prop1: '450', prop2: '170', item_id: item2.id, part_codes: '1,2,01191,01171,01161', price: 13600, images: '')
+Modification.create(code: '13011', prop1: '450', prop2: '246', item_id: item2.id, part_codes: '1,2,01191,01171,01161', price: 13600, images: '')
+Modification.create(code: '13016', prop1: '600', prop2:  '96', item_id: item2.id, part_codes: '1,2,01192,01172,01162', price: 14000, images: '')
+Modification.create(code: '13021', prop1: '600', prop2: '170', item_id: item2.id, part_codes: '1,2,01192,01172,01162', price: 14000, images: '')
+Modification.create(code: '13026', prop1: '600', prop2: '246', item_id: item2.id, part_codes: '1,2,01192,01172,01162', price: 14000, images: '')
+Modification.create(code: '13031', prop1: '750', prop2:  '96', item_id: item2.id, part_codes: '1,2,01193,01173,01163', price: 14800, images: '')
+Modification.create(code: '13036', prop1: '750', prop2: '170', item_id: item2.id, part_codes: '1,2,01193,01173,01163', price: 14800, images: '')
+Modification.create(code: '13041', prop1: '750', prop2: '246', item_id: item2.id, part_codes: '1,2,01193,01173,01163', price: 14800, images: '')
+Modification.create(code: '13046', prop1: '900', prop2:  '96', item_id: item2.id, part_codes: '2,01194,01174,01164', price: 15600, images: '')
+Modification.create(code: '13051', prop1: '900', prop2: '170', item_id: item2.id, part_codes: '2,01194,01174,01164', price: 15600, images: '')
+Modification.create(code: '13056', prop1: '900', prop2: '246', item_id: item2.id, part_codes: '2,01194,01174,01164', price: 15600, images: '')
+[
+  {code: '1', name: 'пневмовакуумное',      item_id: 2, price: 1200, description: ''},
+  {code: '2', name: 'с модулем и катушкой', item_id: 2, price: 4400, description: ''},
+].each { |hash| Part.create(hash) }

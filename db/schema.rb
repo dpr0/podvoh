@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_02_13_140700) do
     t.string "phone"
     t.string "email"
     t.string "address"
+    t.string "catalog"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
