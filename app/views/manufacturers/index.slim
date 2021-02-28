@@ -11,7 +11,8 @@ section.text-center
                     = image_tag "podvoh/image_part_#{(i+1).to_s.rjust(3, "0")}.jpg", style: 'width: 14%;', class: 'bordered'
     .row
       - @manufacturers.each do |manufacturer|
-        .col-2
+        .col-sm-3
           = manufacturer.name
-          p = link_to manufacturer_path(manufacturer.id), class: 'btn btn-outline-primary' do
-            = image_tag "manufacturers/#{manufacturer.code}.jpg", style: 'width: 90%;'
+          p = link_to manufacturer_path(manufacturer.id) do
+            = image_tag "manufacturers/#{manufacturer.code}.jpg", style: 'width: 90%; height: 5.75rem;', class: 'img-fluid img-center'
+

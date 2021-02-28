@@ -10,7 +10,6 @@
     "@rails/webpacker": "^5.2.1",
     "admin-lte": "^3.1.0-rc",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "bootstrap": "^4.6.0",
     "core-js": "^3.9.0",
     "firebase": "^8.2.9",
     "firebaseui-ru": "^3.4.2",
@@ -21,8 +20,7 @@
     "popper.js": "^1.16.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "turbolinks": "^5.2.0"
+    "react-dom": "^17.0.1"
   },
   "version": "0.1.0",
   "devDependencies": {

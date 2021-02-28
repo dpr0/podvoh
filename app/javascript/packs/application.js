@@ -1,8 +1,6 @@
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import 'bootstrap'
 import firebase from 'firebase/app';
 import "@fortawesome/fontawesome-free/js/all";
 require("firebase")
@@ -10,7 +8,6 @@ require("firebaseui-ru")
 require('admin-lte')
 
 Rails.start()
-Turbolinks.start()
 ActiveStorage.start()
 
 var config = {

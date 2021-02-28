@@ -1,12 +1,12 @@
 section.text-center
   .container
     .row
-      .col-2
+      .col-sm-2
         h1.text-uppercase = link_to "#{@manufacturer.name}", '#'
         h1 = flag_icon(@manufacturer.country)
-      .col-2
+      .col-sm-2
         = image_tag "manufacturers/#{@manufacturer.code}.jpg", style: 'width: 99%;'
-      .col-4
+      .col-sm-4
         div.text-left
           div
             small Оф.сайт:
@@ -26,5 +26,5 @@ section.text-center
             small = link_to @manufacturer.address, '#'
     .row
       - @items.each do |item|
-        .col-2
+        .col-sm-2
           = link_to item.name, section_category_subcategory_item_path(Section.podvoh, item.subcategory.category.id, item.subcategory.id, item.id), class: 'btn btn-outline-primary'

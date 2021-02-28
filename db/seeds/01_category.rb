@@ -64,7 +64,7 @@ cat7 = Category.create(code: 'other',    name: 'Другое',              sect
 {code: 'molchanovs',   name: 'Molchanovs',   country: '', www: '',     catalog: '', phone: '',    email: '',    address: ''},
 {code: 'mvd',          name: 'MVD',          country: 'gr', www: '',     catalog: '', phone: '',    email: '',    address: ''},
 {code: 'oceanic',      name: 'Oceanic',      country: '', www: '',     catalog: '', phone: '',    email: '',    address: ''},
-{code: 'omer',         name: 'O.M.E.R.',     country: 'it', www: 'omersub.com',     catalog: '', phone: '+39039207881',    email: 'OMR-info@aqualung.com',    address: '14ème Rue | 06513 Carros, France'},
+{code: 'omer',         name: 'O.M.E.R.',     country: 'it', www: 'omersub.com',     catalog: 'http://www.omersub.com/wp-content/themes/trackstore-child/assets/pdf/cataloghi/OMER_2021.pdf', phone: '+39039207881',    email: 'OMR-info@aqualung.com',    address: '14ème Rue | 06513 Carros, France'},
 {code: 'pelengas',     name: 'Pelengas',     country: 'ua', www: '',     catalog: '', phone: '',    email: '',    address: ''},
 {code: 'picasso',      name: 'Picasso',      country: '', www: '',     catalog: '', phone: '',    email: '',    address: ''},
 {code: 'rob_allen',    name: 'Rob Allen',    country: 'za', www: '',     catalog: '', phone: '',    email: '',    address: ''},

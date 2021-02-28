@@ -2,14 +2,25 @@ section.text-center
   .container
     .row
       h4.text-uppercase = @item.name
-
     .row
-      .col-8
+      .col-sm-8
         .row
-          .col-12
-            = link_to 'Убрать фильтр', section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id), class: 'btn btn-block btn-outline-primary'
+          - if @sum
+            .col-sm-4
+              .info-box.bg-success
+                span.info-box-icon
+                  i.far.fa-flag
+                .info-box-content
+                  span.info-box-text Цена
+                  span.info-box-number#sum = "₽#{@sum}"
+                  .progress
+                    .progress-bar#sum_percent style=("width: 0%")
+                  span.progress-description
+                    | -----------------
+          .col-sm-4
+            p = link_to 'Убрать фильтр', section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id), class: 'btn btn-block btn-outline-danger'
         .row
-          .col-4
+          .col-sm-4
             - Item::PROPS.each do |prop|
               - property = @item.send(prop)
               - next unless property
@@ -25,39 +36,28 @@ section.text-center
                             - Item::PROPS.each { |p| query[p] = params[p] if params[p] }
                             - query[prop.to_sym] = mods.first.send(prop).to_i
                             td = link_to mods.first.send(prop).to_i, section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id, query), class: (params[prop] == mods.first.send(prop).to_s ? "text-primary " : "text-secondary ") + "btn btn-block btn-outline-primary"
-          .col-8
+          .col-sm-8
             .text-center
               .d-flex.h-100
                 .project-text.w-100.my-auto.text-center class="text-lg-left"
                   = form_tag '', id: 'parts_form', remote: true
-                  - if @mods_parts.present?
-                    table.table-sm
-                      thead Индивидуально:
-                      tbody
-                      .form-check
-                        - @mods_parts.each do |mod_part|
-                          tr
-                            td
-                              .custom-control.custom-checkbox
-                                input.custom-control-input type="checkbox" id="mod_part_#{mod_part.id}" class="manufacturer" data-id="#{mod_part.id}"
-                                label.custom-control-label for="mod_part_#{mod_part.id}"
-                                  td
-                                    sup.text-right.text-primary = "+#{mod_part.price} "
-                                  td = mod_part.name
-                  table.table-sm
-                    thead Дополнительно:
-                    tbody
-                    .form-check
-                      - @item_parts.each do |item_part|
-                        tr
-                          td
-                            .custom-control.custom-checkbox
-                              input.custom-control-input type="checkbox" id="mod_part_#{item_part.id}" class="manufacturer" data-id="#{item_part.id}"
-                              label.custom-control-label for="mod_part_#{item_part.id}"
-                                td
-                                  sup.text-right.text-primary = "+#{item_part.price} "
-                                td = item_part.name
-      .col-4
+                  - { 'Индивидуально' => @mods_parts, 'Дополнительно' => @item_parts}.each do |key, parts|
+                    - if parts.present?
+                      table.table-sm
+                        thead = "#{key}:"
+                        tbody
+                        .form-check
+                          - parts.each do |mod_part|
+                            tr
+                              td
+                                .custom-control.custom-checkbox
+                                  input.custom-control-input type="checkbox" id="mod_part_#{mod_part.id}" class="manufacturer" data-id="#{mod_part.id}"
+                                  label.custom-control-label for="mod_part_#{mod_part.id}"
+                                    td
+                                      sup.text-right.text-primary = "+#{mod_part.price} "
+                                    td = mod_part.name
+
+      .col-sm-4
         .filter
           = render partial: 'filter'
 

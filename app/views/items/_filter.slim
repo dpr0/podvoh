@@ -1,5 +1,4 @@
 .row
-  .btn.btn-block.btn-outline-primary.disabled aria-disabled="true" = "₽#{@sum}"
   - @grouped_modifications&.uniq&.each do |prop, mods|
     - mods.each do |mod|
       - mod.images.split(",").map { |z| (!@reel && z.to_i == 19) ? '00' : z.to_i.to_s.rjust(2, "0") }.each_slice(12) do |part|
