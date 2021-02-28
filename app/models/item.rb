@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to :manufacturer
   has_many :modifications
   has_many :parts
+  has_and_belongs_to_many :users
 
   PROPS = [:prop1, :prop2, :prop3].freeze
 end

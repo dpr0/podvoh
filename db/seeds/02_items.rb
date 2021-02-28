@@ -56,3 +56,8 @@ Modification.create(code: '13056', prop1: '900', prop2: '246', item_id: item2.id
   {code: '1', name: 'пневмовакуумное',      item_id: 2, price: 1200, description: ''},
   {code: '2', name: 'с модулем и катушкой', item_id: 2, price: 4400, description: ''},
 ].each { |hash| Part.create(hash) }
+
+item3 = Item.create(manufacturer_id: Manufacturer.cached[:abysstar].id, subcategory_id: 2, name: 'Amberjack', code: 'amberjack', prop1: 'Длина', prop2: nil, prop3: nil, part_codes: '')
+Modification.create(code: 'amberjack60', prop1: '60', item_id: item3.id, part_codes: nil, price: 7000, images: '0')
+Modification.create(code: 'amberjack75', prop1: '75', item_id: item3.id, part_codes: nil, price: 7500, images: '0')
+Modification.create(code: 'amberjack90', prop1: '90', item_id: item3.id, part_codes: nil, price: 8000, images: '0')

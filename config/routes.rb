@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'callbacks' }
   root 'manufacturers#index'
 
+  resources :users, only: [:index, :show]
   resources :manufacturers
 
   resources :sections do

@@ -19,14 +19,16 @@ nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
   /         i.fas.fa-search
   ul.navbar-nav.ml-auto
     - unless current_user
-      = link_to 'Войти', new_user_session_path, class: 'nav-link', data: { turbolinks: false }
+      = link_to 'Войти', new_user_session_path, class: 'nav-link'
     - else
-      a.nav-link href="#" = current_user.email
-      = link_to 'Выйти', destroy_user_session_path, class: 'nav-link', method: :delete
+      li.nav-item
+        = link_to user_path(current_user.id), class: 'nav-link' do
+          i.far.fa-user
+          span.badge.badge-primary.navbar-badge 0
       li.nav-item.dropdown
         a.nav-link data-toggle="dropdown" href="#"
           i.far.fa-comments
-          span.badge.badge-danger.navbar-badge 3
+          span.badge.badge-danger.navbar-badge 0
         .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
           a.dropdown-item href="#"
           .media
@@ -36,36 +38,38 @@ nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
                 = current_user.email
                 span.float-right.text-sm.text-danger
                   i.fas.fa-star
-              p.text-sm Call me whenever you can...
+              p.text-sm текст сообщения
               p.text-sm.text-muted
                 i.far.fa-clock.mr-1
-                | 4 Hours Ago
+                | 4 часа назад
           .dropdown-divider
-
           a.dropdown-item.dropdown-footer href="#" Все сообщения
       li.nav-item.dropdown
         a.nav-link data-toggle="dropdown" href="#"
           i.far.fa-bell
-          span.badge.badge-warning.navbar-badge 15
+          span.badge.badge-warning.navbar-badge 0
         .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
-          span.dropdown-header 15 Notifications
+          span.dropdown-header 0 уведомлений
           .dropdown-divider
           a.dropdown-item href="#"
             i.fas.fa-envelope.mr-2
-            | 4 new messages
-            span.float-right.text-muted.text-sm 3 mins
+            | 0 новых сообщений
+            span.float-right.text-muted.text-sm 3 минуты
           .dropdown-divider
           a.dropdown-item href="#"
             i.fas.fa-users.mr-2
-            | 8 friend rests
-            span.float-right.text-muted.text-sm 12 hours
+            | 0 запросов в друзья
+            span.float-right.text-muted.text-sm 12 часов
           .dropdown-divider
           a.dropdown-item href="#"
             i.fas.fa-file.mr-2
-            | 3 new reports
-            span.float-right.text-muted.text-sm 2 days
+            | 0 новых отчетов
+            span.float-right.text-muted.text-sm 2 дня
           .dropdown-divider
-          a.dropdown-item.dropdown-footer href="#"  See All Notifications
+          a.dropdown-item.dropdown-footer href="#" Просмотр всех уведомлений
       li.nav-item
         a.nav-link data-slide="true" data-widget="control-sidebar" href="#" role="button"
           i.fas.fa-th-large
+      li.nav-item
+        = link_to destroy_user_session_path, class: 'nav-link', method: :delete do
+          i.fas.fa-sign-out-alt

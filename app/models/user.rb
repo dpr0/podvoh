@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :trackable, :recoverable, :rememberable,
          :validatable, :omniauthable, omniauth_providers: [:firebase, :telegram, :yandex]
   has_many :authorizations, dependent: :destroy
+  has_and_belongs_to_many :items
 
   def self.find_for_oauth(auth)
     authorization = Authorization.where(provider: auth[:provider], uid: auth[:uid]).first

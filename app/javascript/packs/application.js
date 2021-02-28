@@ -46,3 +46,5 @@ ui.start('#firebaseui-auth-container', {
     },
     credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO
 });
+
+$( () => $('[data-toggle="tooltip"]').tooltip() )
