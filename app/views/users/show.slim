@@ -7,7 +7,7 @@ section.text-center
             - (0..13).each_slice(7) do |part|
               div
                 - part.each do |i|
-                  = link_to '#' do
+                  = link_to '#', class: 'faded' do
                     = image_tag "podvoh/image_part_#{(i+1).to_s.rjust(3, "0")}.jpg", style: 'width: 14%;', class: 'border'
     .row
       .col-sm-4
