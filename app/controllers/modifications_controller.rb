@@ -3,14 +3,20 @@
 class ModificationsController < ApplicationController
   def index; end
 
-  def add
-    # byebug
-    current_user
-
-    params[:section_id]
-    params[:category_id]
-    params[:subcategory_id]
-    params[:item_id]
-    params[:modification_id]
+  def favourite
+    user_mods = current_user.modification_users
+    user_mod = user_mods.find_by(modification_id: params[:modification_id])
+    if user_mod
+      user_mod.destroy
+    else
+      user_mods.create(
+        modification_id: params[:modification_id],
+        section_id:      params[:section_id],
+        category_id:     params[:category_id],
+        subcategory_id:  params[:subcategory_id],
+        item_id:         params[:item_id]
+      )
+    end
+    redirect_to section_category_subcategory_item_path(params[:section_id], params[:category_id], params[:subcategory_id], params[:item_id])
   end
 end

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       resources :subcategories do
         resources :items do
           resources :modifications do
-            post :add, on: :collection
+            post :favourite, on: :collection
           end
           post :filter, on: :member
         end

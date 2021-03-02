@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -55,6 +57,19 @@ ActiveRecord::Schema.define(version: 2021_02_28_051458) do
     t.string "catalog"
   end
 
+  create_table "modification_users", force: :cascade do |t|
+    t.integer "modification_id"
+    t.integer "user_id"
+    t.integer "section_id"
+    t.integer "category_id"
+    t.integer "subcategory_id"
+    t.integer "item_id"
+    t.boolean "lost"
+    t.datetime "created_at"
+    t.index ["modification_id", "user_id"], name: "index_modification_users_on_modification_id_and_user_id"
+    t.index ["user_id", "modification_id"], name: "index_modification_users_on_user_id_and_modification_id"
+  end
+
   create_table "modifications", force: :cascade do |t|
     t.string "code"
     t.string "prop1"
@@ -65,15 +80,6 @@ ActiveRecord::Schema.define(version: 2021_02_28_051458) do
     t.integer "image_id"
     t.string "images", default: "0"
     t.string "part_codes"
-  end
-
-  create_table "modifications_users", id: false, force: :cascade do |t|
-    t.bigint "modification_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at"
-    t.boolean "lost"
-    t.index ["modification_id", "user_id"], name: "index_modifications_users_on_modification_id_and_user_id"
-    t.index ["user_id", "modification_id"], name: "index_modifications_users_on_user_id_and_modification_id"
   end
 
   create_table "parts", force: :cascade do |t|

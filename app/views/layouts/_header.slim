@@ -10,7 +10,7 @@ nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
         = link_to @category.name, section_category_path(Section.podvoh, @category.id), class: 'nav-link'
     - if @subcategory
       li.nav-item.d-none.d-sm-inline-block
-        = link_to @subcategory.name, section_category_path(Section.podvoh, @category.id, @subcategory.id), class: 'nav-link'
+        = link_to @subcategory.name, section_category_subcategory_path(Section.podvoh, @category.id, @subcategory.id), class: 'nav-link'
   / form.form-inline.ml-3
   /   .input-group.input-group-sm
   /     input.form-control.form-control-navbar aria-label="Search" placeholder="Поиск" type="search"
@@ -24,7 +24,7 @@ nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
       li.nav-item
         = link_to user_path(current_user.id), class: 'nav-link' do
           i.far.fa-user
-          span.badge.badge-primary.navbar-badge 0
+          span.badge.badge-primary.navbar-badge = current_user.modifications.count
       li.nav-item.dropdown
         a.nav-link data-toggle="dropdown" href="#"
           i.far.fa-comments

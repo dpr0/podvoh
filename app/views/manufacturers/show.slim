@@ -5,7 +5,7 @@ section.text-center
         h1.text-uppercase = link_to "#{@manufacturer.name}", '#'
         h1 = flag_icon(@manufacturer.country)
       .col-sm-2
-        = image_tag "manufacturers/#{@manufacturer.code}.jpg", style: 'width: 99%;'
+        = image_tag "manufacturers/logo/#{@manufacturer.code}.jpg", style: 'width: 99%;'
       .col-sm-4
         div.text-left
           div

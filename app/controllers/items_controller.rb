@@ -3,7 +3,9 @@
 class ItemsController < ApplicationController
   before_action :load_all
 
-  def show; end
+  def show
+    @user_mods = current_user&.modifications
+  end
 
   def filter
     @reel = params[:parts]&.include?('1')

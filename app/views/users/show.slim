@@ -8,5 +8,12 @@ section.text-center
               div
                 - part.each do |i|
                   = link_to '#' do
-                    = image_tag "podvoh/image_part_#{(i+1).to_s.rjust(3, "0")}.jpg", style: 'width: 14%;', alt: i
+                    = image_tag "podvoh/image_part_#{(i+1).to_s.rjust(3, "0")}.jpg", style: 'width: 14%;', class: 'border'
     .row
+      .col-sm-4
+        - @grouped_items.each do |subcategory, items|
+          b = subcategory.name
+          ul
+            - items.each do |item|
+              - mod = @user_mods.find_by(item_id: item.id)
+              li.text-sm-left = "#{item.manufacturer.name} #{item.name} #{mod.prop1}#{' / ' if mod.prop2}#{mod.prop2}"

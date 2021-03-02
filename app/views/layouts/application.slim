@@ -16,6 +16,8 @@ html
       = render 'layouts/header'
       = render 'layouts/sidebar'
       .content-wrapper
+        sub
+          = link_to 'telegram канал "podvoh.xyz" - без рекламы!', 'https://t.me/podvoh_xyz', class: 'nav-link', target: :_blank
         = yield
       = render 'layouts/footer'
       = render 'layouts/control_sidebar'
