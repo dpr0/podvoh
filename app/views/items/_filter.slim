@@ -1,8 +1,9 @@
 .row
   - @grouped_modifications&.uniq&.each do |prop, mods|
     - mods.each do |mod|
-      - z = mod.images.split(",").map { |z| (!@reel && z.to_i == 19) ? '00' : z.to_i.to_s.rjust(2, "0") }
-      - z.each_slice(12) do |part|
+      - mod.images.split(",").map { |z| (!@reel && z.to_i == 19) ? '00' : z.to_i.to_s.rjust(2, "0") }.each_slice(@item.img_divider) do |image_part|
         div
-          - part.each do |i|
-            = image_tag "#{@item.code}/image_part_#{i}.jpg", style: "width: #{ z.size == 1 ? 100 : 8}%;", class: 'bordered logo'
+          - image_part.each do |i|
+            = image_tag "manufacturers/#{@item.manufacturer.code}/#{@item.code}/image_part_#{i}.jpg", style: "width: #{ 100 / @item.img_divider }%;", class: 'bordered logo'
+      - if current_user
+        div = link_to "у меня есть #{mod.prop1} / #{mod.prop2}", add_section_category_subcategory_item_modifications_path(modification_id: mod.id, item_id: @item.id), method: :post, remote: true, class: "btn btn-block btn-primary"

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-item1 = Item.create(manufacturer_id: Manufacturer.cached[:kayuk].id, subcategory_id: 1, name: 'Борисыч', code: 'borisych', prop1: 'Длина, мм', prop2: 'До рукоятки, мм', prop3: nil, part_codes: '01111,01021,01026,01031,01155,01076,01077,01121,01131,01146')
+item1 = Item.create(manufacturer_id: Manufacturer.cached[:kayuk].id, subcategory_id: 1, name: 'Борисыч', code: 'borisych', prop1: 'Длина, мм', prop2: 'До рукоятки, мм', prop3: nil, part_codes: '01111,01021,01026,01031,01155,01076,01077,01121,01131,01146', img_divider: 12)
 m01 = Modification.create(code: '20001', prop1: '450', prop2:  '59', item_id: item1.id, part_codes: '01191,01171,01161', price: 19200, images: '0, 0, 0, 0, 0, 1, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0')
 m02 = Modification.create(code: '20003', prop1: '450', prop2: '207', item_id: item1.id, part_codes: '01191,01171,01161', price: 19200, images: '0, 0, 0, 0, 0, 1, 6, 7, 8, 4, 5, 9, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0, 0')
 m03 = Modification.create(code: '20005', prop1: '600', prop2:  '59', item_id: item1.id, part_codes: '01192,01172,01162', price: 19200, images: '0, 0, 1, 2, 4, 5, 3, 3, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0')
@@ -40,24 +40,39 @@ m11 = Modification.create(code: '20021', prop1: '900', prop2: '246', item_id: it
 ].each { |hash| Part.create(hash) }
 
 item2 = Item.create(manufacturer_id: Manufacturer.cached[:kayuk].id, subcategory_id: 1, name: 'Каюк-13', code: 'kayuk13', prop1: 'Длина, мм', prop2: 'До рукоятки, мм', prop3: nil, part_codes: '')
-Modification.create(code: '13001', prop1: '450', prop2:  '96', item_id: item2.id, part_codes: '1,2,01191,01171,01161', price: 13600, images: '')
-Modification.create(code: '13006', prop1: '450', prop2: '170', item_id: item2.id, part_codes: '1,2,01191,01171,01161', price: 13600, images: '')
-Modification.create(code: '13011', prop1: '450', prop2: '246', item_id: item2.id, part_codes: '1,2,01191,01171,01161', price: 13600, images: '')
-Modification.create(code: '13016', prop1: '600', prop2:  '96', item_id: item2.id, part_codes: '1,2,01192,01172,01162', price: 14000, images: '')
-Modification.create(code: '13021', prop1: '600', prop2: '170', item_id: item2.id, part_codes: '1,2,01192,01172,01162', price: 14000, images: '')
-Modification.create(code: '13026', prop1: '600', prop2: '246', item_id: item2.id, part_codes: '1,2,01192,01172,01162', price: 14000, images: '')
-Modification.create(code: '13031', prop1: '750', prop2:  '96', item_id: item2.id, part_codes: '1,2,01193,01173,01163', price: 14800, images: '')
-Modification.create(code: '13036', prop1: '750', prop2: '170', item_id: item2.id, part_codes: '1,2,01193,01173,01163', price: 14800, images: '')
-Modification.create(code: '13041', prop1: '750', prop2: '246', item_id: item2.id, part_codes: '1,2,01193,01173,01163', price: 14800, images: '')
-Modification.create(code: '13046', prop1: '900', prop2:  '96', item_id: item2.id, part_codes: '2,01194,01174,01164', price: 15600, images: '')
-Modification.create(code: '13051', prop1: '900', prop2: '170', item_id: item2.id, part_codes: '2,01194,01174,01164', price: 15600, images: '')
-Modification.create(code: '13056', prop1: '900', prop2: '246', item_id: item2.id, part_codes: '2,01194,01174,01164', price: 15600, images: '')
+Modification.create(code: '13001', prop1: '450', prop2:  '96', item_id: item2.id, part_codes: '1,2,01191,01171,01161', price: 13600)
+Modification.create(code: '13006', prop1: '450', prop2: '170', item_id: item2.id, part_codes: '1,2,01191,01171,01161', price: 13600)
+Modification.create(code: '13011', prop1: '450', prop2: '246', item_id: item2.id, part_codes: '1,2,01191,01171,01161', price: 13600)
+Modification.create(code: '13016', prop1: '600', prop2:  '96', item_id: item2.id, part_codes: '1,2,01192,01172,01162', price: 14000)
+Modification.create(code: '13021', prop1: '600', prop2: '170', item_id: item2.id, part_codes: '1,2,01192,01172,01162', price: 14000)
+Modification.create(code: '13026', prop1: '600', prop2: '246', item_id: item2.id, part_codes: '1,2,01192,01172,01162', price: 14000)
+Modification.create(code: '13031', prop1: '750', prop2:  '96', item_id: item2.id, part_codes: '1,2,01193,01173,01163', price: 14800)
+Modification.create(code: '13036', prop1: '750', prop2: '170', item_id: item2.id, part_codes: '1,2,01193,01173,01163', price: 14800)
+Modification.create(code: '13041', prop1: '750', prop2: '246', item_id: item2.id, part_codes: '1,2,01193,01173,01163', price: 14800)
+Modification.create(code: '13046', prop1: '900', prop2:  '96', item_id: item2.id, part_codes: '2,01194,01174,01164', price: 15600)
+Modification.create(code: '13051', prop1: '900', prop2: '170', item_id: item2.id, part_codes: '2,01194,01174,01164', price: 15600)
+Modification.create(code: '13056', prop1: '900', prop2: '246', item_id: item2.id, part_codes: '2,01194,01174,01164', price: 15600)
 [
   {code: '1', name: 'пневмовакуумное',      item_id: 2, price: 1200, description: ''},
   {code: '2', name: 'с модулем и катушкой', item_id: 2, price: 4400, description: ''},
 ].each { |hash| Part.create(hash) }
 
 item3 = Item.create(manufacturer_id: Manufacturer.cached[:abysstar].id, subcategory_id: 2, name: 'Amberjack', code: 'amberjack', prop1: 'Длина', prop2: nil, prop3: nil, part_codes: '')
-Modification.create(code: 'amberjack60', prop1: '60', item_id: item3.id, part_codes: nil, price: 7000, images: '0')
-Modification.create(code: 'amberjack75', prop1: '75', item_id: item3.id, part_codes: nil, price: 7500, images: '0')
-Modification.create(code: 'amberjack90', prop1: '90', item_id: item3.id, part_codes: nil, price: 8000, images: '0')
+Modification.create(code: 'amberjack60', prop1: '60', item_id: item3.id, part_codes: nil, price: 7000)
+Modification.create(code: 'amberjack75', prop1: '75', item_id: item3.id, part_codes: nil, price: 7500)
+Modification.create(code: 'amberjack90', prop1: '90', item_id: item3.id, part_codes: nil, price: 8000)
+
+item4 = Item.create(manufacturer_id: Manufacturer.cached[:c4].id, subcategory_id: Subcategory.cached[:footpocket].id, name: 'c4 400', code: '400', prop1: 'Цвет', prop2: nil, prop3: nil, part_codes: '')
+Modification.create(code: 'osc4500n', prop1: 'black',  prop2: nil, item_id: item4.id, part_codes: '', price: 5191, images: '0')
+Modification.create(code: 'osc4500w', prop1: 'white',  prop2: nil, item_id: item4.id, part_codes: '', price: 5191, images: '0')
+
+item5 = Item.create(manufacturer_id: Manufacturer.cached[:c4].id, subcategory_id: Subcategory.cached[:footpocket].id, name: 'c4 300', code: '300', prop1: 'Цвет', prop2: nil, prop3: nil, part_codes: '')
+Modification.create(code: 'osc4300n',  prop1: 'black',  prop2: nil, item_id: item5.id, part_codes: '', price: 6573, images: '0')
+Modification.create(code: 'osc4300b',  prop1: 'white',  prop2: nil, item_id: item5.id, part_codes: '', price: 6573, images: '0')
+Modification.create(code: 'osc4300bl', prop1: 'blue',   prop2: nil, item_id: item5.id, part_codes: '', price: 6573, images: '0')
+Modification.create(code: 'osc4300br', prop1: 'brown',  prop2: nil, item_id: item5.id, part_codes: '', price: 6573, images: '0')
+Modification.create(code: 'osc4300sg', prop1: 'silver', prop2: nil, item_id: item5.id, part_codes: '', price: 7113, images: '0')
+
+item6 = Item.create(manufacturer_id: Manufacturer.cached[:c4].id, subcategory_id: Subcategory.cached[:footpocket].id, name: 'c4 anatomic', code: 'anatomic', prop1: 'Цвет', prop2: nil, prop3: nil, part_codes: '')
+Modification.create(code: 'osc4nd', prop1: 'black',   prop2: nil, item_id: item6.id, part_codes: '', price: 9330)
+Modification.create(code: 'osc4ad', prop1: 'orange',  prop2: nil, item_id: item6.id, part_codes: '', price: 9330, images: '1')

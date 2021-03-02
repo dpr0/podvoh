@@ -34,8 +34,9 @@ section.text-center
                           tr
                             - query = {}
                             - Item::PROPS.each { |p| query[p] = params[p] if params[p] }
-                            - query[prop.to_sym] = mods.first.send(prop).to_i
-                            td = link_to mods.first.send(prop).to_i, section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id, query), class: (params[prop] == mods.first.send(prop).to_s ? "text-primary " : "text-secondary ") + "btn btn-block btn-outline-primary"
+                            - query[prop.to_sym] = mods.first.send(prop)
+                            td = link_to mods.first.send(prop), section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id, query), class: (params[prop] == mods.first.send(prop).to_s ? "text-primary " : "text-secondary ") + "btn btn-block btn-outline-primary"
+
           .col-sm-8
             .text-center
               .d-flex.h-100

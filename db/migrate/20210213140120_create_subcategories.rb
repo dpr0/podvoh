@@ -7,7 +7,6 @@ class CreateSubcategories < ActiveRecord::Migration[6.1]
       t.string :name
       t.integer :category_id
       t.string :klass
-      t.timestamps
     end
   end
 end

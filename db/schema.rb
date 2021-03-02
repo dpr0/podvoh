@@ -30,8 +30,6 @@ ActiveRecord::Schema.define(version: 2021_02_28_051458) do
     t.string "name"
     t.integer "section_id"
     t.string "klass"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -39,19 +37,11 @@ ActiveRecord::Schema.define(version: 2021_02_28_051458) do
     t.string "name"
     t.integer "manufacturer_id"
     t.integer "subcategory_id"
+    t.integer "img_divider", default: 1
     t.string "prop1"
     t.string "prop2"
     t.string "prop3"
     t.string "part_codes"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "items_users", id: false, force: :cascade do |t|
-    t.bigint "item_id", null: false
-    t.bigint "user_id", null: false
-    t.index ["item_id", "user_id"], name: "index_items_users_on_item_id_and_user_id"
-    t.index ["user_id", "item_id"], name: "index_items_users_on_user_id_and_item_id"
   end
 
   create_table "manufacturers", force: :cascade do |t|
@@ -62,8 +52,7 @@ ActiveRecord::Schema.define(version: 2021_02_28_051458) do
     t.string "phone"
     t.string "email"
     t.string "address"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "catalog"
   end
 
   create_table "modifications", force: :cascade do |t|
@@ -74,10 +63,17 @@ ActiveRecord::Schema.define(version: 2021_02_28_051458) do
     t.integer "price"
     t.integer "item_id"
     t.integer "image_id"
-    t.string "images"
+    t.string "images", default: "0"
     t.string "part_codes"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "modifications_users", id: false, force: :cascade do |t|
+    t.bigint "modification_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at"
+    t.boolean "lost"
+    t.index ["modification_id", "user_id"], name: "index_modifications_users_on_modification_id_and_user_id"
+    t.index ["user_id", "modification_id"], name: "index_modifications_users_on_user_id_and_modification_id"
   end
 
   create_table "parts", force: :cascade do |t|
@@ -87,15 +83,11 @@ ActiveRecord::Schema.define(version: 2021_02_28_051458) do
     t.integer "modification_id"
     t.integer "price"
     t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "sections", force: :cascade do |t|
     t.string "code"
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "subcategories", force: :cascade do |t|
@@ -103,8 +95,6 @@ ActiveRecord::Schema.define(version: 2021_02_28_051458) do
     t.string "name"
     t.integer "category_id"
     t.string "klass"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

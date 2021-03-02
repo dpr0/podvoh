@@ -5,5 +5,5 @@ section.text-center
         .col-sm-3
           = manufacturer.name
           p = link_to manufacturer_path(manufacturer.id) do
-            = image_tag "manufacturers/#{manufacturer.code}.jpg", style: 'width: 90%; height: 5.75rem;', class: 'img-fluid img-center'
+            = image_tag "manufacturers/logo/#{manufacturer.code}.jpg", style: 'width: 90%; height: 5.75rem;', class: 'img-fluid img-center'
 

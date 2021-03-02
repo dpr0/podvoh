@@ -59,7 +59,7 @@ cat7 = Category.create(code: 'other',    name: 'Другое',              sect
 {code: 'imersion',     name: 'Imersion',     country: '',   www: '',                           catalog: '', phone: '',    email: '',    address: ''},
 {code: 'kayuk',        name: 'Каюк',         country: 'by', www: 'kayuk.by',                   catalog: '', phone: '+375296443303',    email: 'info@kayuk.by',    address: 'Минск, ул.Л.Беды, д. 31, кв. 119'},
 {code: 'leaderfins',   name: 'Leaderfins',   country: '',   www: 'leaderfins.com',             catalog: '', phone: '',    email: '',    address: ''},
-{code: 'mares',        name: 'mares',        country: 'it'  www: 'mares.com',                  catalog: 'https://media.head.com/_11__/documents/DL/384048-hde0ohi2y2o0s0ww', phone: '+3901852011',    email: '',    address: 'Salita Bonsen 4 P.O. Box 142 16035 Rapallo (Genova) '},
+{code: 'mares',        name: 'mares',        country: 'it', www: 'mares.com',                  catalog: 'https://media.head.com/_11__/documents/DL/384048-hde0ohi2y2o0s0ww', phone: '+3901852011',    email: '',    address: 'Salita Bonsen 4 P.O. Box 142 16035 Rapallo (Genova) '},
 {code: 'marlin',       name: 'Marlin',       country: '',   www: '',                           catalog: '', phone: '',    email: '',    address: ''},
 {code: 'molchanovs',   name: 'Molchanovs',   country: 'ru', www: 'molchanovs.com',             catalog: '', phone: '',    email: 'info@molchanovs.com',    address: 'Щёлковское ш., 3с1, Москва, 105122'},
 {code: 'mvd',          name: 'MVD',          country: 'gr', www: 'mvd-retail.gr',              catalog: '', phone: '',    email: '',    address: ''},

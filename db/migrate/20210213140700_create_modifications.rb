@@ -10,9 +10,8 @@ class CreateModifications < ActiveRecord::Migration[6.1]
       t.integer :price
       t.integer :item_id
       t.integer :image_id
-      t.string :images
+      t.string :images, default: '0'
       t.string :part_codes
-      t.timestamps
     end
   end
 end

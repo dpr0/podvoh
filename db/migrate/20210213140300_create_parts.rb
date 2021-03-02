@@ -9,7 +9,6 @@ class CreateParts < ActiveRecord::Migration[6.1]
       t.integer :modification_id
       t.integer :price
       t.string :description
-      t.timestamps
     end
   end
 end
