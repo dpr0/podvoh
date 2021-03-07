@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -77,8 +75,8 @@ ActiveRecord::Schema.define(version: 2021_02_28_051458) do
     t.string "prop3"
     t.integer "price"
     t.integer "item_id"
-    t.integer "image_id"
-    t.string "images", default: "0"
+    t.string "image_url"
+    t.string "images"
     t.string "part_codes"
   end
 
