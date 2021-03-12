@@ -30,14 +30,15 @@ section.text-center
                     table.table-sm
                       .btn.btn-block.btn-outline-primary.disabled aria-disabled="true" = property
                       tbody
-                        - @modifications.group_by(&prop).each do |pr, mods|
-                          tr
-                            - query = {}
-                            - Item::PROPS.each { |p| query[p] = params[p] if params[p] }
-                            - query[prop.to_sym] = mods.first.send(prop)
-                            td = link_to mods.first.send(prop), section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id, query), class: (params[prop] == mods.first.send(prop).to_s ? "text-primary " : "text-secondary ") + "btn btn-block btn-outline-primary"
+                        - @grouped_modifications.each do |pr, mods|
+                          - query = {}
+                          - Item::PROPS.each { |p| query[p] = params[p] if params[p] }
+                          - mods.uniq { |x| x.send(prop) }.each do |mod|
+                            - query[prop.to_sym] = mod.send(prop)
+                            tr
+                              td = link_to mod.send(prop), section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id, query), class: "btn btn-block btn-#{(params[prop] == mod.send(prop).to_s ? "" : "outline-")}primary"
 
-          .col-sm-8
+          .col-sm-4
             .text-center
               .d-flex.h-100
                 .project-text.w-100.my-auto.text-center class="text-lg-left"

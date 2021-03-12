@@ -5,12 +5,6 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4
   .sidebar
     nav.mt-2
       ul.nav.nav-pills.nav-sidebar.flex-column data-accordion="false" data-widget="treeview" role="menu"
-        / li.nav-item
-        /   = link_to categories_path, class: 'nav-link' do
-        /     i.nav-icon.fas.fa-th
-        /     p
-        /       | xxx.
-        /       span.right.badge.badge-danger xxx.
         - Category.eager_load(:subcategories).where(section_id: Section.podvoh).each do |category|
           li.nav-item.has-treeview class="#{ @category && @category.code == category.code ? 'menu-open' : '' }"
             a.nav-link class="#{ @category && @category.code == category.code ? '' : 'active' }" href="#"
@@ -21,4 +15,5 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4
                 li.nav-item
                   = link_to section_category_subcategory_path(Section.podvoh, category.id, subcategory.id), class: 'nav-link' do
                     = subcategory.name
-                    i.right.nav-icon class="#{subcategory.klass}"
+                    span.right class="#{'badge badge-primary' if @subcategory.code == subcategory.code }"
+                      i.nav-icon class="#{subcategory.klass}"
