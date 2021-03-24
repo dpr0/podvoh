@@ -48,7 +48,7 @@ cat6 = Category.create(code: 'other',    name: 'Другое',              sect
 {code: 'aqua_sphere',  name: 'Aqua Sphere',  country: 'it', www: '',                           catalog: '', phone: '',    email: '',    address: ''},
 {code: 'aquadiscovery',name: 'Aquadiscovery',country: 'ru', www: 'aquadiscoveryint.com',       catalog: '', phone: '+78632643232',    email: 'aquasub@aquasub.ru',    address: 'Ростов-на-Дону, ул.Красноармейская, 101'},
 {code: 'aqualung',     name: 'Aqualung',     country: 'fr', www: 'aqualung.com',               catalog: 'https://issuu.com/edunascimento76/docs/aqua_lung_buyers_guide_2021', phone: '',    email: '',    address: ''},
-{code: 'bare',         name: 'Bare',         country: 'us', www: 'baresports.com',             catalog: '', phone: '8882708595',    email: 'tac@huishoutdoors.com',    address: ''},
+{code: 'bare',         name: 'Bare',         country: 'ca', www: 'baresports.com',             catalog: '', phone: '8882708595',    email: 'tac@huishoutdoors.com',    address: ''},
 {code: 'beuchat',      name: 'Beuchat',      country: 'fr', www: 'beuchat-diving.com',         catalog: 'https://www.beuchat-diving.com/img/cms/Catalogues/2021_BEUCHAT_Spearfishing_Catalog_FR-EN.pdf', phone: '',    email: '',    address: ''},
 {code: 'bs_diver',     name: 'BS DIVER',     country: 'ua', www: '',                           catalog: '', phone: '',    email: '',    address: ''},
 {code: 'cetma',        name: 'Cetma',        country: 'it', www: 'cetmacomposites.it',         catalog: '', phone: '+393479025799',    email: 'info@cetmacomposites.it',    address: 'C/O Cittadella della Ricerca S.S.7 Appla Km.706+030 72100 Brindisi'},
