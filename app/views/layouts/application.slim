@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    meta name="yandex-verification" content="b8209de9862994b1"
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
+    = csrf_meta_tags
+    = csp_meta_tag
+    title podvoh.xyz
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'https://www.google.com/jsapi'
+    = favicon_link_tag asset_path('favicon.ico')
+
+    link href="https://podvoh.xyz" rel="canonical"
+    meta name="description" content="podvoh.xyz"
+    meta name="twitter:card" content="summary_large_image"
+    meta property="og:url" content="https://podvoh.xyz/"
+    meta property="og:site_name" content="podvoh.xyz"
+    meta property="og:type" content="website"
+    meta property="og:title" content="podvoh.xyz"
+    meta property="og:locale" content="ru_RU"
+    meta property="og:description" content="Снаряжение для подводной охоты"
+    meta property="og:image" content="#{asset_path('redmask2.png')}"
+
+  body.hold-transition.sidebar-mini.layout-fixed data-scrollbar-auto-hide="n"
+    .wrapper
+      = render 'layouts/header'
+      = render 'layouts/sidebar'
+      .content-wrapper
+        sub.text-right
+          p
+            b= link_to 'Телеграм-канал "podvoh.xyz"', 'https://t.me/podvoh_xyz', class: 'nav-link', target: :_blank
+        = yield
+      = render 'layouts/footer'
+      = render 'layouts/control_sidebar'
+
+link rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css"
+
+javascript:
+    if ("#{Rails.env}" == 'production') {
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(72064657, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true});
+    }

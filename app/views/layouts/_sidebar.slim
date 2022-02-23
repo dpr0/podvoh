@@ -1,0 +1,19 @@
+aside.main-sidebar.sidebar-dark-primary.elevation-4
+  = link_to root_path, class: 'brand-link' do
+    = image_tag 'redmask2.png', style: "opacity: .8", class: 'brand-image elevation-3'
+    span.brand-text.font-weight-light podvoh.xyz
+  .sidebar
+    nav.mt-2
+      ul.nav.nav-pills.nav-sidebar.flex-column data-accordion="false" data-widget="treeview" role="menu"
+        - Category.eager_load(:subcategories).where(section_id: Section.podvoh).each do |category|
+          li.nav-item.has-treeview class="#{ @category && @category.code == category.code ? 'menu-open' : '' }"
+            a.nav-link class="#{ @category && @category.code != category.code ? '' : 'active' }" href="#"
+              i.nav-icon class="#{category.klass}"
+              p = category.name
+            ul.nav.nav-treeview
+              - category.subcategories.each do |subcategory|
+                li.nav-item
+                  = link_to section_category_subcategory_path(Section.podvoh, category.id, subcategory.id), class: 'nav-link' do
+                    = subcategory.name
+                    span.right class="#{'badge badge-primary' if @subcategory&.code == subcategory.code }"
+                      i.nav-icon class="#{subcategory.klass}"

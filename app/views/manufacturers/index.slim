@@ -1,0 +1,8 @@
+section.text-center
+  .container-fluid
+    .row
+      - @manufacturers.each do |manufacturer|
+        .col-sm-2
+          sub.text-white-50= manufacturer.name
+          p = link_to manufacturer_path(manufacturer.id), class: 'faded' do
+            = image_tag "manufacturers/logo/#{manufacturer.code}.jpg", style: 'width: 90%; height: 5.75rem;', class: 'img-fluid img-center bg-secondary'
