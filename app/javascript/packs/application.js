@@ -3,7 +3,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("firebase")
 require("firebaseui-ru")
-require('admin-lte')
+// require('admin-lte')
 import firebase from 'firebase/app'
 import "@fortawesome/fontawesome-free/js/all";
 
