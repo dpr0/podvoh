@@ -92,7 +92,7 @@ cat6 = Category.create(code: 'other',    name: 'Другое',              sect
 {code: 'triton',       name: 'Triton',       country: 'lv', www: 'tritonsub.com',              catalog: '', phone: '+37127760707',    email: 'hello@tritonsub.com',    address: 'Kr.Valdemara str. 63, Riga, LV-1010'},
 {code: 'tusa',         name: 'Tusa',         country: 'jp', www: 'tusa.com',                   catalog: 'https://issuu.com/tusa/docs/2021-tusa-catalog_eng__d6__issuu_?fr=sNmNjODMyNjU4MQ', phone: '0336242816',    email: 'pr@tabata.co.jp',    address: '1-3-17, Higashikomagata, Sumida-ku Tokyo, 130-0005'},
 {code: 'vector',       name: 'Vector',       country: 'ru', www: 'vector-sea.ru',              catalog: '', phone: '+79384264849',    email: 'sney@live.ru',    address: 'г. Абинск ул.Некрасова 70ж инд. 353322'},
-{code: 'vlanik',       name: 'Vlanik',       country: 'ru', www: 'vlanikgun.simplesite.com',   catalog: '', phone: '+79384584459',    email: 'vlanik48@mail.ru',    address: ''},
+{code: 'vlanik',       name: 'Vlanik',       country: 'ru', www: 'taplink.cc/vlanikgun',       catalog: '', phone: '+79384584459',    email: 'vlanik48@mail.ru',    address: ''},
 {code: 'zelinka',      name: 'Zelinka',      country: 'ua', www: '',                           catalog: '', phone: '',    email: '',    address: ''},
 # {code: 'borne',        name: 'Borne',        country: '',   www: '',                      catalog: '', phone: '',    email: '',    address: ''},
 # {code: 'aruba',        name: 'Aruba',        country: 'tw', www: '',                      catalog: '', phone: '',    email: '',    address: ''},
